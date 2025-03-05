@@ -1,0 +1,11 @@
+checkpoints/*
+lightning_logs/*
+wandb/*
+.wandb
+models/*
+videos/*
+submission_data/*
+submission_data_out/*
+core
+model.pth
+*.pyc
