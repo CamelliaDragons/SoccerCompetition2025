@@ -1,5 +1,4 @@
 import pandas as pd
-import itertools
 
 
 def goal_data(df: pd.DataFrame) -> list[pd.DataFrame]:
@@ -53,24 +52,6 @@ def one_hot(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def drop(df: pd.DataFrame) -> pd.DataFrame:
-    agents = [f"l{id}" for id in range(1, 12)] + [f"r{id}" for id in range(1, 12)]
-    b = ["vx", "vy", "t", "body", "neck", "vwidth", "stamina"]
-    drop_cols = [f"{a}_{b}" for a, b in itertools.product(agents, b)]
-    drop_cols += ["b_vx", "b_vy"]
-    drop_cols += [
-        "#",
-        "cycle",
-        "stopped",
-        "playmode",
-        "l_score",
-        "l_pen_score",
-        "r_score",
-        "r_pen_score",
-    ]
-    return df.drop(columns=drop_cols)
-
-
 def frame(df: pd.DataFrame) -> pd.DataFrame:
     df["frame"] = df.reset_index().index
     return df
@@ -79,7 +60,6 @@ def frame(df: pd.DataFrame) -> pd.DataFrame:
 def process_data(df: pd.DataFrame) -> list[pd.DataFrame]:
     dfs = goal_data(df)
     dfs = [one_hot(df) for df in dfs]
-    # dfs = [drop(df) for df in dfs]
     dfs = [frame(df) for df in dfs]
     return dfs
 
