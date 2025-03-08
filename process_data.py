@@ -62,13 +62,3 @@ def process_data(df: pd.DataFrame) -> list[pd.DataFrame]:
     dfs = [one_hot(df) for df in dfs]
     dfs = [frame(df) for df in dfs]
     return dfs
-
-
-# df = pd.read_csv(
-#     "/root/robocup/robocup2d_data/aeteam2024-oxsy2024/1216-1024-aeteam2024-oxsy2024-0002-sim03.tracking.csv"
-# )
-
-# dfs = prosess(df)
-# for i in dfs:
-#     print(i["goal_type"].iloc[0])
-# dfs[1].head()

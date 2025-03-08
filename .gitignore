@@ -6,6 +6,7 @@ models/*
 videos/*
 submission_data/*
 submission_data_out/*
+artifacts/*
 core
 model.pth
 *.pyc
