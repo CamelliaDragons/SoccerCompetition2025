@@ -1,24 +1,20 @@
-# 
-サッカー軌道予測コンペティションにおけるCamelliDragonsのコードです.
+[サッカー軌道予測コンペティション](https://sites.google.com/view/stp-challenge)におけるCamellia Dragonsのコードです.
 
-# 
-ベストモデルをデータをhuggingfaceに公開しています. 
-
-# 注意事項
-- wandb及びhuggingfaceのログインが求められるかもしれません. 
+ベストモデルをHuggingfaceにアップロードしています.
+https://huggingface.co/ReonOhashi/RobocupTrajectoryPrediction2025
 
 # ファイルの構成
 **前処理**
-- `data_download.ipynb`: 全データのダウンロード & ゴールデータを50フレーム抽出する 
-- `data_upload.ipynb`: データをhuggingfaceにアップロードを行う
-- `data_preprocess.ipynb`: データの前処理を行い`data`ディレクトリに保存する. 
+1. `data_download.ip`: 2024年度のロボカップ2Dデータをすべてダウンロードし, ゴールデータを50フレーム抽出する 
+2. `data_upload.ipynb`: 1のデータをhuggingfaceにアップロードをする
+3. `data_preprocess.ipynb`: 2からデータを読み込んでデータの前処理を行い`data`ディレクトリに保存する
 
 **訓練**
-- `train.ipynb`: モデルの訓練を行う。
+- `train_GRU.ipynb`: `data`ディレクトリの内容からモデルの訓練を行う
 
 **予測**
-- `submission.ipynb`: テストデータに対する予測を行い、提出用のcsvファイル`submission_data`から読み込み, `submission_data_out`に作成する。モデルのパスを適切に変更してください。
+- `submission.ipynb`: 提出用のcsvファイル`submission_data`から読み込みテストデータに対する予測を行う. 結果は`submission_data_out`に作成される
 
 **その他ライブラリ**
-- `process_data.py` : `data_download.ipynb`にて, データの前処理を行うモジュール
+- `process_data.py` : `data_download.ipynb`にてデータの前処理を行うモジュール
 - `visualize.py` : データの可視化を行うモジュール
